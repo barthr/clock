@@ -3,7 +3,7 @@ import ntptime
 from machine import Timer
 from writer import Writer
 from centerwriter import CenterWriter
-from fonts import jetbrains35
+from fonts import jetbrains35, freesans20
 from drivers import epd_2in9
 import network
 import utime
@@ -82,13 +82,19 @@ epd.fill(0xff)
 
 
 cw = CenterWriter(epd, jetbrains35)
-cw.set_vertical_spacing(0)
-cw.set_horizontal_shift(0)
-cw.set_vertical_shift(-86)
+cw.set_vertical_spacing(10)
+cw.set_horizontal_shift(90)
+cw.set_vertical_shift(-96)
+
+date_writer = CenterWriter(epd, freesans20)
+date_writer.set_vertical_spacing(10)
+date_writer.set_horizontal_shift(90)
+date_writer.set_vertical_shift(-72)
 
 
 def update_screen(time, date):
-    cw.write_lines([time, date])
+    cw.write_lines([time])
+    date_writer.write_lines([date])
     epd.display(epd.buffer)
 
 

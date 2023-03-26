@@ -24,7 +24,7 @@ class CenterWriter():
             len(lines) - self.spacing
         row = (self.device.height - total_height) // 2 + self.v_shift
 
-        if row < 0 or (row + total_height) >= self.device.height:
+        if (row + total_height) >= self.device.height:
             print(
                 f"row: {row}, total_height: {total_height}, device.height: {self.device.height}")
             raise ValueError('Text position exceeds display limit (vertical)')

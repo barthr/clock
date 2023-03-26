@@ -83,8 +83,8 @@ class Writer():
             print(fstr.format(font.reverse(), device.width, device.height))
             print('Start row = {} col = {}'.format(
                 self._getstate().text_row, self._getstate().text_col))
-        self.screenwidth = device.width  # In pixels
-        self.screenheight = device.height
+        self.screenwidth = 296  # In pixels TODO
+        self.screenheight = 128 # TODO 
         self.bgcolor = 0  # Monochrome background and foreground colors
         self.fgcolor = 1
         self.row_clip = False  # Clip or scroll when screen fullt
