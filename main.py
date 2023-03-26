@@ -101,9 +101,6 @@ def update_screen(time, date):
 
 local_time = get_local_time_with_tz()
 current_time = format_time_to_military(local_time)
-current_date = format_date_to_dutch(local_time)
-update_screen(current_time, current_date)
-
 
 def update_clock():
     global current_time
@@ -124,7 +121,7 @@ if __name__ == '__main__':
     timer.init(period=SECOND, mode=Timer.PERIODIC,
                callback=lambda t: update_clock())
 
-    # hardware timer for ntp sync every hour
-    sync_ntp_timer = Timer(-1)
-    sync_ntp_timer = sync_ntp_timer.init(period=60 * 60 * SECOND, mode=Timer.PERIODIC,
-                                         callback=lambda t: sync_ntp())
+    # # hardware timer for ntp sync every hour
+    # sync_ntp_timer = Timer(-1)
+    # sync_ntp_timer = sync_ntp_timer.init(period=60 * 60 * SECOND, mode=Timer.PERIODIC,
+    #                                      callback=lambda t: sync_ntp())
