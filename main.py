@@ -116,13 +116,14 @@ def update_clock():
 
 
 if __name__ == '__main__':
+    sync_ntp()
+
     SECOND = 1000
     timer = Timer(-1)
     timer.init(period=SECOND, mode=Timer.PERIODIC,
                callback=lambda t: update_clock())
 
     # hardware timer for ntp sync every hour
-    sync_ntp()
     sync_ntp_timer = Timer(-1)
     sync_ntp_timer = sync_ntp_timer.init(period=60 * 60 * SECOND, mode=Timer.PERIODIC,
                                          callback=lambda t: sync_ntp())
