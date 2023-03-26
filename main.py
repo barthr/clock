@@ -53,8 +53,11 @@ def sync_ntp():
     if wn is None:
         print("Network connection failed skipping ntp check")
         return
+    try:
+        ntptime.settime()
+    except:
+        print("Time synchronization failed")
 
-    ntptime.settime()
     print("Local time after synchronization：%s" % str(time.localtime()))
     wn.disconnect()
 
@@ -74,8 +77,6 @@ def get_local_time_with_tz():
     local_time_ts = utime.mktime(time.localtime()) + TZ_OFFSET
     return utime.localtime(local_time_ts)
 
-
-print(format_time_to_military(get_local_time_with_tz()))
 
 epd = epd_2in9.EPD_2in9_Landscape()
 epd.fill(0xff)
